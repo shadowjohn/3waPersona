@@ -1,10 +1,5 @@
 [
   {
-    "path": "public/assets/character.vrm",
-    "url": "https://raw.githubusercontent.com/pixiv/three-vrm/1b4fc0cc7ef39a49d62bb7a66dcfeca8f65316f7/packages/three-vrm/examples/models/VRM1_Constraint_Twist_Sample.vrm",
-    "sha256": "12c2b97e95e700783a6a550dc0eee2d7880aeedccef9ae67bc4c5a2f0f2631a2"
-  },
-  {
     "path": "public/vendor/three.module.js",
     "url": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
     "sha256": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"

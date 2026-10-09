@@ -316,7 +316,7 @@ async function initialize() {
     key.position.set(-1, 2, 3); scene.add(key);
     const loader = new GLTFLoader();
     loader.register(parser => new VRMLoaderPlugin(parser));
-    const gltf = await loader.loadAsync('./assets/character.vrm');
+    const gltf = await loader.loadAsync('/api/character');
     vrm = gltf.userData.vrm;
     if (!vrm) throw new Error('角色模型格式有誤。');
     // Official VRM optimizations avoid evaluating unused vertices and morphs.

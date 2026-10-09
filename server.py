@@ -87,6 +87,10 @@ async def tts(body: SpeechRequest, request: Request):
 async def index():
     return FileResponse(ROOT / "public" / "index.html")
 
+@app.get("/api/character")
+async def character():
+    return FileResponse(ROOT / "data" / "Mio 米歐.vrm", media_type="model/gltf-binary")
+
 app.mount("/", StaticFiles(directory=ROOT / "public"), name="public")
 
 if __name__ == "__main__":
