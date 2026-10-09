@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3waPersona · 嘴型與表情試說</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">{"imports":{"three":"./vendor/three.module.js","@pixiv/three-vrm":"./vendor/three-vrm.module.min.js","../utils/BufferGeometryUtils.js":"./vendor/BufferGeometryUtils.js"}}</script>
+</head>
+<body>
+  <header><a class="brand" href="./"><span class="brand-mark">m</span>Mio<span class="brand-note">說話實驗室</span></a><span class="edition">EdgeTTS · v0.1</span></header>
+  <main>
+    <section class="stage" aria-label="卡通人物預覽">
+      <div class="stage-top"><span class="stage-label">米歐</span><span id="state" role="status">角色載入中</span></div>
+      <div id="avatar"><canvas id="scene" aria-label="會說話的卡通人物"></canvas><div id="loading">正在準備角色…</div></div>
+      <div class="stage-bottom"><p id="subtitle" aria-live="polite">準備好了，讓我說一句話吧。</p><div class="audio-line" aria-hidden="true"><canvas id="spectrum" width="320" height="32"></canvas></div></div>
+      <div class="stage-foot"><span>聲音、嘴型與表情一起試</span><span id="shape-label">待機</span></div>
+    </section>
+    <section class="controls" aria-labelledby="try-title">
+      <div class="controls-heading"><span class="section-number">01</span><h1 id="try-title">試說一句</h1></div>
+      <label for="text">想讓米歐說什麼？</label>
+      <textarea id="text" maxlength="1000" spellcheck="false">你好，羽山。我是米歐，很高興見到你。今天想聊些什麼呢？</textarea>
+      <div class="samples"><button type="button" data-sample="hello">打招呼</button><button type="button" data-sample="question">問個問題</button><button type="button" data-sample="vowels">測試嘴型</button></div>
+      <div class="two-columns"><div><label for="voice">聲音</label><select id="voice"><option value="zh-TW-HsiaoChenNeural">曉臻 · 台灣女聲</option><option value="zh-TW-HsiaoYuNeural">曉雨 · 台灣女聲</option></select></div><div><label for="mood">表情</label><select id="mood"><option value="auto">自然</option><option value="happy">微笑</option><option value="thinking">思考</option><option value="surprised">驚訝</option><option value="neutral">平靜</option></select></div></div>
+      <div class="range-row"><label for="rate">語速</label><output id="rate-value">正常</output></div><input id="rate" type="range" min="-30" max="30" step="5" value="0">
+      <div class="play-controls"><button id="speak" class="primary" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span>開始說話</span></button><button id="stop" class="secondary" disabled>停止</button></div>
+      <p id="message" class="message" role="status">載入完成後，就能開始試說。</p>
+      <div class="divider"></div>
+      <div class="controls-heading small"><span class="section-number">02</span><h2>看一點細節</h2></div>
+      <div class="switch-row"><label for="expressions">眨眼、視線與頭部動作</label><input id="expressions" type="checkbox" checked></div>
+      <details><summary>微調嘴型</summary><div class="fine-settings"><div class="range-row"><label for="gain">嘴型幅度</label><output id="gain-value">1.0</output></div><input id="gain" type="range" min="0.5" max="1.8" step="0.1" value="1"><div class="range-row"><label for="sync">嘴型時間偏移</label><output id="sync-value">0 ms</output></div><input id="sync" type="range" min="-150" max="150" step="10" value="0"><p>正值讓嘴型提前；可依播放裝置調整。</p></div></details>
+      <p class="privacy-note">輸入的文字會交給 EdgeTTS 產生語音。</p>
+    </section>
+  </main>
+  <footer>角色模型 © pixiv Inc.<span>先把每一句話，說得自然一點。</span></footer>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
